@@ -6,7 +6,7 @@ const temp = require("temp");
 
 const request = require('request').defaults({ encoding: null });
 
-process.env['LD_DEBUG'] = 'all';
+//process.env['LD_DEBUG'] = 'all';
 
 const urlToBuffer = (url, cb) => {
 	request.get(url, function (error, response, body) {
@@ -32,7 +32,7 @@ const imageToOCR = (buffer, cb) => {
     bufferToPath(buffer, (err, path) => {
         if (err) return cb(err);
         tesseract.process(path, {
-			binary: process.env.BIN_DIR || './tesseract'
+			binary: (process.env.BIN_DIR || '.') + '/tesseract' 
 		}, (err, text) => {
             if (err) {
                 cb(err);
@@ -54,8 +54,12 @@ const handler = exports.handler = function (event, context) {
 	}else{
 		urlToBuffer(event.url, process);
 	}
+	
 };
 
+process.on('uncaughtException', function(err) {
+	console.log(err);
+});
 
 
 
