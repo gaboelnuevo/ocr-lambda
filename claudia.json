@@ -1,0 +1,7 @@
+{
+  "lambda": {
+    "role": "ocr-lambda-executor",
+    "name": "ocr-lambda",
+    "region": "us-west-2"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ocr-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "claudia update --profile coffii --set-env-from-json env.json --use-s3-bucket coffii-claudia-deploy"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-tesseract": "^0.2.7",
+    "request": "^2.82.0",
+    "temp": "^0.8.3"
+  }
+}
